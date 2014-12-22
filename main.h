@@ -12,8 +12,8 @@ typedef enum {APP, FOLDER, DOC, WEB, SYS, CAL, SET} SUPPORT_TYPE;
 struct RESULT
 {
     SUPPORT_TYPE type;
-    char path[100];
-    char name[100];
+    gchar path[100];
+    gchar name[100];
 };
 
 struct PREFERENCE
@@ -30,7 +30,7 @@ struct PREFERENCE
     int file_c;
     int file_h;
 
-    char find_path[100];
+    gchar find_path[100];
 
     int hotkey_space;
     int hotkey_shift;
@@ -40,6 +40,17 @@ struct PREFERENCE
     int auto_launch;
 }settings;
 
-int search_engine_simulation(char *keywords, struct RESULT **resultList);
+gboolean g_has_alfred;
 
+int search_engine_simulation(gchar *keywords, struct RESULT **resultList);
+
+void open_setting_window();
+
+
+void on_filechooserbuttonPath_file_set(GtkFileChooserButton *widget, gpointer user_data);
+void on_checkbutton_clicked (GtkButton *button, gpointer user_data);
+void on_checkbutton_toggled(GtkToggleButton *togglebutton, gpointer user_data);
+void quit_alfred(GtkWidget *object, gpointer user_data);
+gboolean on_listResult_key_press (GtkWidget *widget, GdkEventKey *event, gpointer user_data);
+void on_textInput_changed(GtkEditable *textInput, gpointer listResult);
 

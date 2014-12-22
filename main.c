@@ -8,7 +8,7 @@
 
 int i_result = 0;
 
-char *get_type_title(SUPPORT_TYPE type)
+gchar *get_type_title(SUPPORT_TYPE type)
 {
     switch(type)
     {
@@ -22,7 +22,7 @@ char *get_type_title(SUPPORT_TYPE type)
     }
 }
 
-SUPPORT_TYPE get_type_code(char *type)
+SUPPORT_TYPE get_type_code(gchar *type)
 {
     if(0 == strcmp("Application",type))
         return APP;
@@ -42,16 +42,19 @@ SUPPORT_TYPE get_type_code(char *type)
         return -1;
 }
 
-int search_engine_simulation(char *keywords, struct RESULT **resultList)
+int search_engine_simulation(gchar *keywords, struct RESULT **resultList)
 {
     int i;
     struct RESULT *response = malloc(5 * sizeof(struct RESULT));
 
     for(i = 0; i < 5; ++i)
     {
-        sprintf(response[i].name, "test text name %d", i_result);
+        sprintf(response[i].name, "test %d", i_result);
         //sprintf(response[i].path, "/home/momo/Downloads/SublimeText2/sublime_text", i_result++);
-        sprintf(response[i].path, "/home/momo/Document/course/linux/jmp.c", i_result++);
+        //sprintf(response[i].path, "/home/momo/Documents/course/linux/jmp.c", i_result++);
+        //sprintf(response[i].path, "www.baidu.com", i_result++);
+        //sprintf(response[i].path, "/home/momo/Documents", i_result++);
+        sprintf(response[i].path, "gnome-screenshot -a", i_result++);
         response[i].type = SET;
     }
     *resultList = response;
@@ -78,7 +81,7 @@ void init_result_list(GtkWidget *listResult)
 void write_settings()
 {
     FILE *fp;
-    char buffer[100];
+    gchar buffer[100];
     fp = fopen("settings.txt", "w");
     if(NULL != fp)
     {
@@ -100,7 +103,7 @@ void init_settings()
 {
     FILE *fp;
     fp = fopen("settings.txt", "r");
-    char buffer[100];
+    gchar buffer[100];
     if(NULL == fp)
     {
         printf("null fp\n");
@@ -147,7 +150,7 @@ void init_settings()
 void add_result_list(GtkWidget *listResult, struct RESULT *response, int size)
 {
     //GtkTreeIter iter;
-    char shortCut[100];
+    gchar shortCut[100];
     GtkListStore *store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(listResult)));
 
     gtk_list_store_clear(store);
@@ -168,18 +171,21 @@ void add_result_list(GtkWidget *listResult, struct RESULT *response, int size)
     }
 }
 
-void open_file_or_application(char *type, char *name, char *path)
+void open_file_or_application(gchar *type, gchar *name, gchar *path)
 {
     printf("into open file function\n");
     printf("path: %s\n", path);
     printf("type: %s\t code: %d\n", type, get_type_code(type));
-    char buffer[150];
+    gchar buffer[150];
     switch(get_type_code(type))
     {
         case APP:
             system(path);
             break;
         case FOLDER:
+            sprintf(buffer, "nautilus %s", path);
+            printf("buffer: %s\n", buffer);
+            system(buffer);
             break;
         case DOC:
             sprintf(buffer, "gedit --new-window %s", path);
@@ -187,6 +193,9 @@ void open_file_or_application(char *type, char *name, char *path)
             system(buffer);
             break;
         case WEB:
+            sprintf(buffer, "firefox \"%s/s?wd=%s\"", path, name);
+            printf("buffer: %s\n", buffer);
+            system(buffer);
             break;
         case SYS:
             system(path);
@@ -201,14 +210,14 @@ void open_file_or_application(char *type, char *name, char *path)
 
 void open_setting_window()
 {
-    char buffer[100];
+    gchar buffer[100];
 
     GtkWidget *preferences = NULL;
     GtkWidget *checkButtonSpace = NULL;
     GtkWidget *checkbuttonOption = NULL;
     GtkWidget *checkbuttonShift = NULL;
     GtkWidget *checkbuttonControl = NULL;
-    GtkWidget *checkbuttonAutoLaunch = NULL;
+    GtkWidget *switchAutoStart = NULL;
     GtkWidget *buttonQuit = NULL;
     GtkWidget *checkbuttonApp = NULL;
     GtkWidget *checkbuttonFolder = NULL;
@@ -233,7 +242,7 @@ void open_setting_window()
     checkbuttonOption = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonOption"));
     checkbuttonShift = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonShift"));
     checkbuttonControl = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonControl"));
-    checkbuttonAutoLaunch = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonAutoLaunch"));
+    switchAutoStart = GTK_WIDGET(gtk_builder_get_object(builder, "switchAutoStart"));
     buttonQuit = GTK_WIDGET(gtk_builder_get_object(builder, "buttonQuit"));
     checkbuttonApp = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonApp"));
     checkbuttonFolder = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonFolder"));
@@ -247,6 +256,9 @@ void open_setting_window()
     checkbuttonFileH = GTK_WIDGET(gtk_builder_get_object(builder, "checkbuttonFileH"));
     entrySearchPath = GTK_WIDGET(gtk_builder_get_object(builder, "entrySearchPath"));
     filechooserbuttonPath = GTK_WIDGET(gtk_builder_get_object(builder, "filechooserbuttonPath"));
+
+    gtk_builder_connect_signals(builder, NULL);
+    g_object_unref(G_OBJECT(builder));
 
     if(settings.get_app) gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbuttonApp), TRUE);
     if(settings.get_folder) gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbuttonFolder), TRUE);
@@ -262,12 +274,57 @@ void open_setting_window()
     if(settings.file_doc) gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbuttonFileDoc), TRUE);
     if(settings.file_c) gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbuttonFileC), TRUE);
     if(settings.file_h) gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(checkbuttonFileH), TRUE);
+    if(settings.auto_launch) gtk_switch_set_active(GTK_SWITCH(switchAutoStart), TRUE);
+
+    g_object_set_data(G_OBJECT(checkbuttonApp), "state", &settings.get_app);
+    g_object_set_data(G_OBJECT(checkbuttonFolder), "state", &settings.get_folder);
+    g_object_set_data(G_OBJECT(checkbuttonDoc), "state", &settings.get_document);
+    g_object_set_data(G_OBJECT(checkbuttonWeb), "state", &settings.get_web);
+    g_object_set_data(G_OBJECT(checkbuttonSys), "state", &settings.get_sys);
+    g_object_set_data(G_OBJECT(checkbuttonCal), "state", &settings.get_cal);
+    g_object_set_data(G_OBJECT(checkButtonSpace), "state", &settings.hotkey_space);
+    g_object_set_data(G_OBJECT(checkbuttonShift), "state", &settings.hotkey_shift);
+    g_object_set_data(G_OBJECT(checkbuttonControl), "state", &settings.hotkey_control);
+    g_object_set_data(G_OBJECT(checkbuttonOption), "state", &settings.hotkey_option);
+    g_object_set_data(G_OBJECT(checkbuttonFileTxt), "state", &settings.file_txt);
+    g_object_set_data(G_OBJECT(checkbuttonFileDoc), "state", &settings.file_doc);
+    g_object_set_data(G_OBJECT(checkbuttonFileC), "state", &settings.file_c);
+    g_object_set_data(G_OBJECT(checkbuttonFileH), "state", &settings.file_h);
+    g_object_set_data(G_OBJECT(switchAutoStart), "state", &settings.auto_launch);
 
     gtk_entry_set_text(entrySearchPath, settings.find_path);
+    gtk_file_chooser_set_filename(GTK_FILE_CHOOSER(filechooserbuttonPath), settings.find_path);
     printf("find path: %s\n", settings.find_path);
 
     gtk_widget_show(preferences);
 
+}
+
+void open_alfred_window()
+{
+    if(g_has_alfred) return;
+
+    GtkWidget *alfred = NULL;
+    GtkWidget *textInput = NULL;
+    GtkWidget *listResult = NULL;
+
+    GtkBuilder *builder = NULL;
+
+    builder = gtk_builder_new();
+    gtk_builder_add_from_file(builder, "interface.glade", NULL);
+
+    alfred = GTK_WIDGET(gtk_builder_get_object(builder, "alfred"));
+    textInput = GTK_WIDGET(gtk_builder_get_object(builder, "textInput"));
+    listResult = GTK_WIDGET(gtk_builder_get_object(builder, "listResult"));
+
+    gtk_builder_connect_signals(builder, NULL);
+    g_object_unref(G_OBJECT(builder));
+
+    init_result_list(listResult);
+
+    g_has_alfred = TRUE;
+
+    gtk_widget_show(alfred);
 }
 
 
@@ -296,7 +353,7 @@ gboolean on_listResult_key_press (GtkWidget *widget, GdkEventKey *event, gpointe
     GtkTreeSelection *selection = NULL;
     GtkTreeModel *store = NULL;
     GtkTreeIter iter;
-    char *type, *name, *path;
+    gchar *type, *name, *path;
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(widget));
     store = gtk_tree_view_get_model(GTK_TREE_VIEW(widget));
@@ -320,65 +377,94 @@ gboolean on_listResult_key_press (GtkWidget *widget, GdkEventKey *event, gpointe
 
             break;
         }
+        case GDK_KEY_space:
+        {
+            printf("enter space\n");
+            if(event->state & ~(GDK_CONTROL_MASK^settings.hotkey_control)
+                & ~(GDK_SHIFT_MASK^settings.hotkey_shift)
+                & ~(GDK_LOCK_MASK^settings.hotkey_option))
+            {
+                open_alfred_window();
+            }
+        }
 
     }
 
     return FALSE;
 }
 
-void quit_alfred(GtkWidget *object, gpointer user_data)
+void on_buttonQuit_clicked(GtkButton *button, gpointer user_data)
 {
     printf("quit alfred in\n");
     write_settings();
     gtk_main_quit();
 }
 
+void close_preferences(GtkWidget *object, gpointer user_data)
+{
+    write_settings();
+}
+
+void on_alfred_destroy(GtkWidget *object, gpointer user_data)
+{
+    g_has_alfred = FALSE;
+}
+
 void on_checkbutton_toggled(GtkToggleButton *togglebutton, gpointer user_data)
 {
     printf("check button toggled\n");
+    int *state;
+
+    state = g_object_get_data(G_OBJECT(togglebutton), "state");
+    if(NULL != state)
+    {
+        printf("state: %d\n", *state);
+        if(1 == *state) *state = 0;
+        else if(0 == *state) *state = 1;
+    }
+
 }
 
-void
-on_checkbutton_clicked (GtkButton *button, gpointer user_data)
+void on_checkbuttonSpace_toggled(GtkToggleButton *togglebutton, gpointer user_data)
 {
-    printf("check button clicked\n");
+    gtk_toggle_button_set_active(togglebutton, TRUE);
 }
 
-on_filechooserbuttonPath_file_set
+void on_filechooserbuttonPath_file_set(GtkFileChooserButton *widget, gpointer user_data)
+{
+    printf("file chooser set\n");
+    gchar *buffer;
+    buffer = gtk_file_chooser_button_get_title(GTK_FILE_CHOOSER_BUTTON(widget));
+    printf("%s\n", buffer);
+}
+
+void selection_changed (GtkFileChooser *chooser, gpointer user_data)
+{
+    printf("selection changed\n");
+    gchar *chooser_path = gtk_file_chooser_get_filename(chooser);
+    printf("current path: %s\n", chooser_path);
+    sprintf(settings.find_path, chooser_path);
+    gtk_entry_set_text(GTK_ENTRY(user_data), chooser_path);
+    printf("settings path: %s\n", settings.find_path);
+    g_free(chooser_path);
+}
+
+
+
+//on_filechooserbuttonPath_confirm_overwrite
+
 
 /*************************** SIGNALS ***************************/
 
 
-int main (int argc, char *argv[])
+int main (int argc, gchar *argv[])
 {
-    printf("main begin\n");
-    GtkWidget *alfred = NULL;
-    GtkWidget *textInput = NULL;
-    GtkWidget *listResult = NULL;
-    GtkListStore *store = NULL;
-
-    GtkBuilder *builder = NULL;
-
     gtk_init(&argc, &argv);
-    builder = gtk_builder_new();
-    gtk_builder_add_from_file(builder, "interface.glade", NULL);
+    g_has_alfred = FALSE;
 
-    alfred = GTK_WIDGET(gtk_builder_get_object(builder, "alfred"));
-    textInput = GTK_WIDGET(gtk_builder_get_object(builder, "textInput"));
-    listResult = GTK_WIDGET(gtk_builder_get_object(builder, "listResult"));
+    open_alfred_window();
 
-
-
-    gtk_builder_connect_signals(builder, NULL);
-    g_object_unref(G_OBJECT(builder));
-
-    init_result_list(listResult);
     init_settings();
-
-    //g_signal_connect(G_OBJECT(alfred), "destroy", G_CALLBACK(quit_alfred), NULL);
-
-    gtk_widget_show(alfred);
-
 
     /* Enter the main loop */
     //gtk_widget_show_all (alfred);

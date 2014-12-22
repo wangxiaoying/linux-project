@@ -9,7 +9,6 @@
     <property name="default_width">500</property>
     <property name="icon">icon.png</property>
     <property name="gravity">center</property>
-    <signal name="destroy" handler="quit_alfred" swapped="no"/>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -70,6 +69,7 @@
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Alfred Preferences</property>
     <property name="window_position">center</property>
+    <signal name="destroy" handler="close_preferences" swapped="no"/>
     <child>
       <object class="GtkNotebook" id="notebook1">
         <property name="visible">True</property>
@@ -87,7 +87,7 @@
                   <object class="GtkLabel" id="label11">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xpad">63</property>
+                    <property name="xpad">120</property>
                     <property name="label" translatable="yes">Hot keys</property>
                     <property name="justify">center</property>
                   </object>
@@ -103,32 +103,16 @@
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
                     <child>
-                      <object class="GtkCheckButton" id="checkbuttonSpace">
-                        <property name="label" translatable="yes">SPACE</property>
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">False</property>
-                        <property name="xalign">0</property>
-                        <property name="yalign">0.61000001430511475</property>
-                        <property name="draw_indicator">True</property>
-                        <signal name="clicked" handler="on_checkbutton_clicked" swapped="no"/>
-                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
-                      </object>
-                      <packing>
-                        <property name="left_attach">0</property>
-                        <property name="top_attach">0</property>
-                        <property name="width">1</property>
-                        <property name="height">1</property>
-                      </packing>
-                    </child>
-                    <child>
                       <object class="GtkCheckButton" id="checkbuttonOption">
                         <property name="label" translatable="yes">OPTION</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -143,8 +127,11 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -159,12 +146,36 @@
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
                         <property name="top_attach">3</property>
+                        <property name="width">1</property>
+                        <property name="height">1</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkCheckButton" id="checkbuttonSpace">
+                        <property name="label" translatable="yes">SPACE</property>
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">False</property>
+                        <property name="hexpand">True</property>
+                        <property name="vexpand">True</property>
+                        <property name="xalign">0</property>
+                        <property name="yalign">0.61000001430511475</property>
+                        <property name="inconsistent">True</property>
+                        <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbuttonSpace_toggled" swapped="no"/>
+                      </object>
+                      <packing>
+                        <property name="left_attach">0</property>
+                        <property name="top_attach">0</property>
                         <property name="width">1</property>
                         <property name="height">1</property>
                       </packing>
@@ -200,11 +211,14 @@
               <object class="GtkGrid" id="grid5">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="margin_top">26</property>
+                <property name="hexpand">False</property>
+                <property name="vexpand">False</property>
                 <child>
                   <object class="GtkLabel" id="label13">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xpad">68</property>
+                    <property name="xpad">125</property>
                     <property name="label" translatable="yes">Startup</property>
                     <property name="justify">center</property>
                   </object>
@@ -216,13 +230,9 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkCheckButton" id="checkbuttonAutoLaunch">
-                    <property name="label" translatable="yes">Launch Alfred at login</property>
+                  <object class="GtkSwitch" id="switchAutoStart">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
-                    <property name="receives_default">False</property>
-                    <property name="xalign">0</property>
-                    <property name="draw_indicator">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -258,7 +268,7 @@
                   <object class="GtkLabel" id="label12">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xpad">57</property>
+                    <property name="xpad">99</property>
                     <property name="label" translatable="yes">Shut down</property>
                     <property name="justify">center</property>
                   </object>
@@ -277,8 +287,11 @@
                     <property name="receives_default">True</property>
                     <property name="halign">center</property>
                     <property name="valign">center</property>
-                    <property name="margin_left">39</property>
+                    <property name="margin_left">3</property>
                     <property name="margin_top">5</property>
+                    <property name="hexpand">True</property>
+                    <property name="vexpand">True</property>
+                    <signal name="clicked" handler="on_buttonQuit_clicked" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -329,6 +342,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -347,6 +361,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -365,6 +380,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -383,6 +399,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -401,6 +418,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -419,6 +437,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -439,7 +458,7 @@
                   <object class="GtkAccelLabel" id="accellabel1">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xpad">39</property>
+                    <property name="xpad">52</property>
                     <property name="label" translatable="yes">Result scale</property>
                     <property name="justify">center</property>
                   </object>
@@ -479,7 +498,7 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileTxt">
-                        <property name="label" translatable="yes">文本文件(txt)</property>
+                        <property name="label" translatable="yes">Text File(txt)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -487,6 +506,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -497,12 +517,13 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileDoc">
-                        <property name="label" translatable="yes">文档(doc, docx)</property>
+                        <property name="label" translatable="yes">Document(doc, docx)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -513,7 +534,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileC">
-                        <property name="label" translatable="yes">源码(c, cpp...)</property>
+                        <property name="label" translatable="yes">Source Code(c, cpp...)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -521,6 +542,7 @@
                         <property name="vexpand">True</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -531,12 +553,13 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileH">
-                        <property name="label" translatable="yes">网页(html)</property>
+                        <property name="label" translatable="yes">Web Page(html)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
                         <property name="xalign">0</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">1</property>
@@ -557,7 +580,7 @@
                   <object class="GtkLabel" id="label14">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="xpad">40</property>
+                    <property name="xpad">53</property>
                     <property name="label" translatable="yes">File support</property>
                     <property name="justify">center</property>
                   </object>
@@ -612,6 +635,7 @@
                     <property name="can_focus">True</property>
                     <property name="margin_left">2</property>
                     <property name="margin_top">8</property>
+                    <property name="hexpand">True</property>
                   </object>
                   <packing>
                     <property name="left_attach">1</property>
@@ -624,12 +648,13 @@
                   <object class="GtkFileChooserButton" id="filechooserbuttonPath">
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
-                    <property name="margin_left">8</property>
+                    <property name="margin_left">10</property>
                     <property name="margin_right">9</property>
                     <property name="margin_top">8</property>
+                    <property name="vexpand">False</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes">View</property>
-                    <signal name="file-set" handler="on_filechooserbuttonPath_file_set" object="entrySearchPath" swapped="no"/>
+                    <signal name="selection-changed" handler="selection_changed" object="entrySearchPath" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -669,7 +694,8 @@
               <object class="GtkImage" id="image1">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="xpad">24</property>
+                <property name="xpad">85</property>
+                <property name="ypad">31</property>
                 <property name="pixbuf">icon.png</property>
               </object>
               <packing>
