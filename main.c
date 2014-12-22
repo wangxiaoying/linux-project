@@ -71,6 +71,11 @@ void init_result_list(GtkWidget *listResult)
     gtk_tree_view_set_model(GTK_TREE_VIEW(listResult), GTK_TREE_MODEL(store));
 }
 
+void set_default_settings()
+{
+
+}
+
 void init_settings()
 {
     FILE *fp;
