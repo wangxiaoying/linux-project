@@ -7,7 +7,7 @@ enum
     COL_NUM
 };
 
-typedef enum {APP, FOLDER, DOC, WEB, SYS, CAL} SUPPORT_TYPE;
+typedef enum {APP, FOLDER, DOC, WEB, SYS, CAL, SET} SUPPORT_TYPE;
 
 struct RESULT
 {
@@ -18,27 +18,27 @@ struct RESULT
 
 struct PREFERENCE
 {
-    bool get_app;
-    bool get_folder;
-    bool get_document;
-    bool get_web;
-    bool get_sys;
-    bool get_cal;
+    int get_app;
+    int get_folder;
+    int get_document;
+    int get_web;
+    int get_sys;
+    int get_cal;
 
-    bool file_txt;
-    bool file_doc;
-    bool file_c;
-    bool file_h;
+    int file_txt;
+    int file_doc;
+    int file_c;
+    int file_h;
 
     char find_path[100];
 
-    bool hotkey_space;
-    bool hotkey_shift;
-    bool hotkey_control;
-    bool hotkey_option;
+    int hotkey_space;
+    int hotkey_shift;
+    int hotkey_control;
+    int hotkey_option;
 
-    bool auto_launch;
-};
+    int auto_launch;
+}settings;
 
 int search_engine_simulation(char *keywords, struct RESULT **resultList);
 

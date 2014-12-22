@@ -2,9 +2,72 @@
 <!-- Generated with glade 3.16.1 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
-  <object class="GtkWindow" id="Preferences">
+  <object class="GtkWindow" id="alfred">
     <property name="can_focus">False</property>
-    <property name="type">popup</property>
+    <property name="title" translatable="yes">Alfred</property>
+    <property name="window_position">center</property>
+    <property name="default_width">500</property>
+    <property name="icon">icon.png</property>
+    <property name="gravity">center</property>
+    <signal name="destroy" handler="quit_alfred" swapped="no"/>
+    <child>
+      <object class="GtkBox" id="box1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkEntry" id="textInput">
+            <property name="name">textInput</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="max_length">30</property>
+            <property name="activates_default">True</property>
+            <property name="placeholder_text" translatable="yes">Please input your keyword here</property>
+            <signal name="changed" handler="on_textInput_changed" object="listResult" swapped="no"/>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkTreeView" id="listResult">
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <signal name="key-press-event" handler="on_listResult_key_press" swapped="no"/>
+            <child internal-child="selection">
+              <object class="GtkTreeSelection" id="treeview-selection2"/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkListStore" id="liststore1"/>
+  <object class="GtkTreeView" id="listResult1">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="model">liststore1</property>
+    <child internal-child="selection">
+      <object class="GtkTreeSelection" id="treeview-selection4"/>
+    </child>
+  </object>
+  <object class="GtkTreeView" id="listResult2">
+    <property name="visible">True</property>
+    <property name="can_focus">True</property>
+    <property name="model">liststore1</property>
+    <child internal-child="selection">
+      <object class="GtkTreeSelection" id="treeview-selection6"/>
+    </child>
+  </object>
+  <object class="GtkWindow" id="preferences">
+    <property name="can_focus">False</property>
     <property name="title" translatable="yes">Alfred Preferences</property>
     <property name="window_position">center</property>
     <child>
@@ -48,6 +111,8 @@
                         <property name="xalign">0</property>
                         <property name="yalign">0.61000001430511475</property>
                         <property name="draw_indicator">True</property>
+                        <signal name="clicked" handler="on_checkbutton_clicked" swapped="no"/>
+                        <signal name="toggled" handler="on_checkbutton_toggled" swapped="no"/>
                       </object>
                       <packing>
                         <property name="left_attach">0</property>
@@ -414,7 +479,7 @@
                     <property name="can_focus">False</property>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileTxt">
-                        <property name="label" translatable="yes">.txt</property>
+                        <property name="label" translatable="yes">文本文件(txt)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -432,7 +497,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileDoc">
-                        <property name="label" translatable="yes">.doc</property>
+                        <property name="label" translatable="yes">文档(doc, docx)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -448,7 +513,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileC">
-                        <property name="label" translatable="yes">.c / .cpp</property>
+                        <property name="label" translatable="yes">源码(c, cpp...)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -466,7 +531,7 @@
                     </child>
                     <child>
                       <object class="GtkCheckButton" id="checkbuttonFileH">
-                        <property name="label" translatable="yes">.h</property>
+                        <property name="label" translatable="yes">网页(html)</property>
                         <property name="visible">True</property>
                         <property name="can_focus">True</property>
                         <property name="receives_default">False</property>
@@ -564,6 +629,7 @@
                     <property name="margin_top">8</property>
                     <property name="action">select-folder</property>
                     <property name="title" translatable="yes">View</property>
+                    <signal name="file-set" handler="on_filechooserbuttonPath_file_set" object="entrySearchPath" swapped="no"/>
                   </object>
                   <packing>
                     <property name="left_attach">2</property>
@@ -734,69 +800,6 @@
           </packing>
         </child>
       </object>
-    </child>
-  </object>
-  <object class="GtkWindow" id="alfred">
-    <property name="can_focus">False</property>
-    <property name="title" translatable="yes">Alfred</property>
-    <property name="window_position">center</property>
-    <property name="default_width">500</property>
-    <property name="icon">icon.png</property>
-    <property name="gravity">center</property>
-    <child>
-      <object class="GtkBox" id="box1">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkEntry" id="textInput">
-            <property name="name">textInput</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="max_length">30</property>
-            <property name="activates_default">True</property>
-            <property name="placeholder_text" translatable="yes">Please input your keyword here</property>
-            <signal name="changed" handler="on_textInput_changed" object="listResult" swapped="no"/>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkTreeView" id="listResult">
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <signal name="key-press-event" handler="on_listResult_key_press" swapped="no"/>
-            <child internal-child="selection">
-              <object class="GtkTreeSelection" id="treeview-selection2"/>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
-    </child>
-  </object>
-  <object class="GtkListStore" id="liststore1"/>
-  <object class="GtkTreeView" id="listResult1">
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="model">liststore1</property>
-    <child internal-child="selection">
-      <object class="GtkTreeSelection" id="treeview-selection4"/>
-    </child>
-  </object>
-  <object class="GtkTreeView" id="listResult2">
-    <property name="visible">True</property>
-    <property name="can_focus">True</property>
-    <property name="model">liststore1</property>
-    <child internal-child="selection">
-      <object class="GtkTreeSelection" id="treeview-selection6"/>
     </child>
   </object>
 </interface>

@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1419224522 source:/home/momo/prog/linux/Alfred/main.c
+1419250690 source:/home/momo/prog/linux/Alfred/main.c
 	<stdlib.h>
+	<stdio.h>
 	<gtk/gtk.h>
 	<gdk/gdkkeysyms.h>
 	<glade/glade.h>
@@ -3703,5 +3704,5 @@
 	<glade/glade.h>
 	<vector>
 
-1419181251 /home/momo/prog/linux/Alfred/main.h
+1419246792 /home/momo/prog/linux/Alfred/main.h
 
