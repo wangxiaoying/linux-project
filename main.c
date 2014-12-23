@@ -267,30 +267,52 @@ void open_file_or_application(gchar *type, gchar *name, gchar *path)
     printf("into open file function\n");
     printf("path: %s\n", path);
     printf("type: %s\t code: %d\n", type, get_type_code(type));
-    gchar buffer[150];
+    gchar buffer[300];
+    pid_t pid;
+
     switch(get_type_code(type))
     {
     case APP:
-        system(path);
+    {
+
+        sprintf(buffer, "launcher/launcher/bin/Release/launcher %s", path);
+        system(buffer);
         break;
+    }
     case FOLDER:
-        sprintf(buffer, "nautilus %s", path);
-        printf("buffer: %s\n", buffer);
-        system(buffer);
+    {
+        pid = fork();
+        if(0 == pid)
+        {
+            execlp("nautilus", path, NULL);
+        }
         break;
+    }
     case DOC:
-        sprintf(buffer, "gedit --new-window %s", path);
-        printf("buffer: %s\n", buffer);
-        system(buffer);
+    {
+        pid = vfork();
+        if(0 == pid)
+        {
+            execlp("gedit", "--new-window", path, NULL);
+        }
         break;
+    }
     case WEB:
-        sprintf(buffer, "firefox \"%s/s?wd=%s\"", path, name);
-        printf("buffer: %s\n", buffer);
-        system(buffer);
+    {
+        pid = vfork();
+        if(0 == pid)
+        {
+            sprintf(buffer, "%s/s?wd=%s", path, name);
+            execlp("firefox", "open", buffer, NULL);
+        }
         break;
+    }
     case SYS:
+    {
         system(path);
         break;
+    }
+
     case CAL:
         break;
     case SET:
@@ -453,18 +475,16 @@ void open_warning_dialog()
 
 }
 
-int k = 0;
-
 gboolean index_building_check(gpointer user_data)
 {
-    if(5 == k)
+    if(2333 != *g_index_done)
     {
         g_change_index = FALSE;
         gtk_widget_destroy(user_data);
         open_alfred_window();
+        idx_save_database("index", g_database);
         return FALSE;
     }
-    k++;
     return TRUE;
 }
 
@@ -472,8 +492,10 @@ void open_indexWindow()
 {
     printf("into open index window\n");
     int i;
-    pid_t pid, _pid;
+    void *temp = NULL;
     if(!g_change_index) return;
+
+    idx_delete_database(g_database);
 
     GtkWidget *indexWindow = NULL;
     GtkBuilder *builder = NULL;
@@ -489,9 +511,11 @@ void open_indexWindow()
     gtk_widget_show(indexWindow);
 
     //index build
+
+    idx_add_documents(settings.find_path, TRUE, &temp, 0);
+    idx_add_documents("/usr/share/applications", FALSE, &temp, 0);
+    g_index_done = idx_create_database_task(temp, &settings, &g_database);
     g_timeout_add_seconds(2, index_building_check, indexWindow);
-
-
 }
 
 
@@ -509,7 +533,7 @@ void on_textInput_changed(GtkEditable *textInput, gpointer listResult)
     keywords = gtk_entry_get_text(GTK_ENTRY(textInput));
 
     struct RESULT *resultList;
-    size = search_engine_simulation(keywords, &resultList, &settings, 1, MAX_LENGTH);
+    size = idx_query(g_database, keywords, 1, MAX_LENGTH, &resultList, &settings);
 
     add_result_list(listResult, resultList, size);
 }
@@ -528,7 +552,8 @@ gboolean on_textInput_key_press_event(GtkWidget *widget, GdkEventKey *event, gpo
             keywords = gtk_entry_get_text(GTK_ENTRY(widget));
 
             struct RESULT *resultList;
-            size = search_engine_simulation(keywords, &resultList, &settings, 0, MAX_LENGTH);
+            //size = search_engine_simulation(keywords, &resultList, &settings, 0, MAX_LENGTH);
+            size = idx_query(g_database, keywords, 0, MAX_LENGTH, &resultList, &settings);
 
             add_result_list(listResult, resultList, size);
             return TRUE;
@@ -737,6 +762,10 @@ int main (int argc, gchar *argv[])
     {
         g_change_index = TRUE;
         open_indexWindow();
+    }
+    else
+    {
+        idx_load_database("index", &g_database);
     }
 
     open_alfred_window();

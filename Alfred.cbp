@@ -34,6 +34,8 @@
 		</Compiler>
 		<Linker>
 			<Add option="-rdynamic  `pkg-config gtk+-3.0 --libs`" />
+			<Add library="libpthread" />
+			<Add library="search/idx-core/bin/Release/libidx-core.a" />
 		</Linker>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />

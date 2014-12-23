@@ -1,0 +1,351 @@
+# depslib dependency file v1.0
+1419166849 source:/home/daryl/桌面/idx-core/main.cpp
+	"pch.h"
+	"style.h"
+	"AtomicInteger.h"
+	"Object.h"
+	"Database.h"
+	"CDynamicVector.h"
+
+1419166849 ector.h"
+
+1419162569 /home/daryl/桌面/idx-core/Object.h
+
+1418982690 source:/home/daryl/桌面/idx-core/Object.cpp
+	<stdio.h>
+	"Object.h"
+
+1419208940 
+
+1419165389 /home/daryl/桌面/idx-core/pch.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stddef.h>
+	<assert.h>
+	<time.h>
+	<malloc.h>
+	<string.h>
+	<pthread.h>
+
+1419211760 >
+
+1418982809 /home/daryl/桌面/idx-core/style.h
+
+1419167192 /home/daryl/桌面/idx-core/Database.h
+	"CConstants.h"
+	"CCriticalSection.h"
+	"CTextFile.h"
+	"CResultPool.h"
+	"AtomicInteger.h"
+	<vector>
+
+1419164332 /home/daryl/桌面/idx-core/AtomicInteger.h
+
+1419163697 /home/daryl/桌面/idx-core/CCriticalSection.h
+
+1419166401 /home/daryl/桌面/idx-core/CDynamicVector.h
+	<vector>
+	"AtomicInteger.h"
+	"CCriticalSection.h"
+
+1419166402 Section.h"
+
+1419166964 /home/daryl/桌面/idx-core/CTextFile.h
+	"Object.h"
+	"CDynamicVector.h"
+	<iostream>
+	<fstream>
+	<string>
+
+1419165996 source:/home/daryl/桌面/idx-core/CTextFile.cpp
+	"pch.h"
+	"CConstants.h"
+	"CTextFile.h"
+
+1419165996 .h"
+
+1419165918 /home/daryl/桌面/idx-core/CConstants.h
+
+1419166889 source:/home/daryl/桌面/idx-core/CResultPool.cpp
+	"pch.h"
+	"CResultPool.h"
+	"CConstants.h"
+
+1419166890 s.h"
+
+1419166838 /home/daryl/桌面/idx-core/CResultPool.h
+	<algorithm>
+	<vector>
+
+1419166890 source:m:\idx-core\cresultpool.cpp
+	"pch.h"
+	"CResultPool.h"
+	"CConstants.h"
+
+1419165390 m:\idx-core\pch.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stddef.h>
+	<assert.h>
+	<time.h>
+	<malloc.h>
+	<string.h>
+	<pthread.h>
+
+1419166838 m:\idx-core\cresultpool.h
+	<algorithm>
+	<vector>
+
+1419165918 m:\idx-core\cconstants.h
+
+1419165996 source:m:\idx-core\ctextfile.cpp
+	"pch.h"
+	"CConstants.h"
+	"CTextFile.h"
+
+1419166964 m:\idx-core\ctextfile.h
+	"Object.h"
+	"CDynamicVector.h"
+	<iostream>
+	<fstream>
+	<string>
+
+1419162570 m:\idx-core\object.h
+
+1419166402 m:\idx-core\cdynamicvector.h
+	<vector>
+	"AtomicInteger.h"
+	"CCriticalSection.h"
+
+1419208822 m:\idx-core\atomicinteger.h
+
+1419163698 m:\idx-core\ccriticalsection.h
+
+1419211720 source:m:\idx-core\main.cpp
+	"pch.h"
+	"style.h"
+	"AtomicInteger.h"
+	"Object.h"
+	"Database.h"
+	"CDynamicVector.h"
+	"CThread.h"
+	<algorithm>
+	<string>
+
+1418982810 m:\idx-core\style.h
+
+1419208952 m:\idx-core\database.h
+	"CConstants.h"
+	"CCriticalSection.h"
+	"CTextFile.h"
+	"CResultPool.h"
+	"AtomicInteger.h"
+	<vector>
+
+1418982690 source:m:\idx-core\object.cpp
+	<stdio.h>
+	"Object.h"
+
+1419208940 source:m:\idx-core\cdatabase.cpp
+	"pch.h"
+	"CConstants.h"
+	"Database.h"
+	<iomanip>
+
+1419211760 m:\idx-core\cthread.h
+	"CCriticalSection.h"
+	<pthread.h>
+
+1419320324 source:/home/daryl/桌面/idx-core/CDatabase.cpp
+	"pch.h"
+	"CConstants.h"
+	"Database.h"
+	<iomanip>
+
+1419309840 /home/daryl/桌面/idx-core/pch.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stddef.h>
+	<errno.h>
+	<assert.h>
+	<time.h>
+	<malloc.h>
+	<string.h>
+	<memory.h>
+	<ctype.h>
+	<pthread.h>
+
+1419320880 /home/daryl/桌面/idx-core/CConstants.h
+
+1419314804 /home/daryl/桌面/idx-core/Database.h
+	"CConstants.h"
+	"CCriticalSection.h"
+	"CTextFile.h"
+	"CResultPool.h"
+	"AtomicInteger.h"
+	<vector>
+
+1419163698 /home/daryl/桌面/idx-core/CCriticalSection.h
+
+1419320324 /home/daryl/桌面/idx-core/CTextFile.h
+	"Object.h"
+	"CDynamicVector.h"
+	<iostream>
+	<fstream>
+	<string>
+	"searching.h"
+
+1419162570 /home/daryl/桌面/idx-core/Object.h
+
+1419258551 /home/daryl/桌面/idx-core/CDynamicVector.h
+	<vector>
+	"AtomicInteger.h"
+	"CCriticalSection.h"
+
+1419208822 /home/daryl/桌面/idx-core/AtomicInteger.h
+
+1419315464 /home/daryl/桌面/idx-core/CResultPool.h
+	<algorithm>
+	<vector>
+
+1419315447 source:/home/daryl/桌面/idx-core/CResultPool.cpp
+	"pch.h"
+	"CResultPool.h"
+	"CConstants.h"
+
+1419333366 source:/home/daryl/桌面/idx-core/CTextFile.cpp
+	"pch.h"
+	"CConstants.h"
+	"CTextFile.h"
+	<sys/stat.h>
+	<fcntl.h>
+	<algorithm>
+
+1419331534 source:/home/daryl/桌面/idx-core/main.cpp
+	"pch.h"
+	"style.h"
+	"AtomicInteger.h"
+	"Object.h"
+	"Database.h"
+	"CDynamicVector.h"
+	"CThread.h"
+	"searching.h"
+	<algorithm>
+	<string>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<dirent.h>
+	<unistd.h>
+
+1418982810 /home/daryl/桌面/idx-core/style.h
+
+1419258414 /home/daryl/桌面/idx-core/CThread.h
+	"CCriticalSection.h"
+	<pthread.h>
+
+1418982690 source:/home/daryl/桌面/idx-core/Object.cpp
+	<stdio.h>
+	"Object.h"
+
+1419332828 source:/home/daryl/桌面/idx-core/searching.cpp
+	"pch.h"
+	"Database.h"
+	"CResultPool.h"
+	"CConstants.h"
+	<fstream>
+	<algorithm>
+	<iomanip>
+	"searching.h"
+	<sys/stat.h>
+	<fcntl.h>
+
+1419331349 /home/daryl/桌面/idx-core/searching.h
+
+1419320324 source:/home/momo/prog/linux/Alfred/search/idx-core/CDatabase.cpp
+	"pch.h"
+	"CConstants.h"
+	"Database.h"
+	<iomanip>
+
+1419309840 /home/momo/prog/linux/Alfred/search/idx-core/pch.h
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stddef.h>
+	<errno.h>
+	<assert.h>
+	<time.h>
+	<malloc.h>
+	<string.h>
+	<memory.h>
+	<ctype.h>
+	<pthread.h>
+
+1419320880 /home/momo/prog/linux/Alfred/search/idx-core/CConstants.h
+
+1419314804 /home/momo/prog/linux/Alfred/search/idx-core/Database.h
+	"CConstants.h"
+	"CCriticalSection.h"
+	"CTextFile.h"
+	"CResultPool.h"
+	"AtomicInteger.h"
+	<vector>
+
+1419163698 /home/momo/prog/linux/Alfred/search/idx-core/CCriticalSection.h
+
+1419320324 /home/momo/prog/linux/Alfred/search/idx-core/CTextFile.h
+	"Object.h"
+	"CDynamicVector.h"
+	<iostream>
+	<fstream>
+	<string>
+	"searching.h"
+
+1419162570 /home/momo/prog/linux/Alfred/search/idx-core/Object.h
+
+1419258551 /home/momo/prog/linux/Alfred/search/idx-core/CDynamicVector.h
+	<vector>
+	"AtomicInteger.h"
+	"CCriticalSection.h"
+
+1419208822 /home/momo/prog/linux/Alfred/search/idx-core/AtomicInteger.h
+
+1419331349 /home/momo/prog/linux/Alfred/search/idx-core/searching.h
+
+1419315464 /home/momo/prog/linux/Alfred/search/idx-core/CResultPool.h
+	<algorithm>
+	<vector>
+
+1419315447 source:/home/momo/prog/linux/Alfred/search/idx-core/CResultPool.cpp
+	"pch.h"
+	"CResultPool.h"
+	"CConstants.h"
+
+1419333517 source:/home/momo/prog/linux/Alfred/search/idx-core/CTextFile.cpp
+	"pch.h"
+	"CConstants.h"
+	"CTextFile.h"
+	<sys/stat.h>
+	<fcntl.h>
+	<algorithm>
+
+1418982690 source:/home/momo/prog/linux/Alfred/search/idx-core/Object.cpp
+	<stdio.h>
+	"Object.h"
+
+1419332828 source:/home/momo/prog/linux/Alfred/search/idx-core/searching.cpp
+	"pch.h"
+	"Database.h"
+	"CResultPool.h"
+	"CConstants.h"
+	<fstream>
+	<algorithm>
+	<iomanip>
+	"searching.h"
+	<sys/stat.h>
+	<fcntl.h>
+

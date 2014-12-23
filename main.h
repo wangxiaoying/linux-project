@@ -45,8 +45,17 @@ struct PREFERENCE
 gboolean g_has_alfred;
 gboolean g_is_quiting;
 gboolean g_change_index;
+void *g_database;
+int *g_index_done;
 
-int search_engine_simulation(gchar *keywords, struct RESULT **resultList, struct PREFERENCE *settings, int onlyName, int maxLength);
+extern int idx_query(void *db, char* queryString, gboolean onlyInName, int maxResults, struct RESULT **results,const struct PREFERENCES *pref);
+extern int* idx_create_database_task(void* files, const struct PREFERENCES *pref, void **db);
+extern int idx_add_documents(const char *directory, int recursive, void **collection, int boost);
+extern int idx_set_stopwords(const char *dictfile);
+extern void idx_set_verbose(int enabled);
+extern void idx_delete_database(void *db);
+extern int idx_save_database(const char *dbfile, void *db);
+extern int idx_load_database(const char *dbfile, void **db);
 
 
 
