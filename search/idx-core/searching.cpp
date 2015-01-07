@@ -172,6 +172,8 @@ scanningfin:
             strcpy(r->path,"");
             r->type=SET;
         }
+
+
         if (pref.get_web)
         {
             r=&(*results)[i++];

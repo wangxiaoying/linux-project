@@ -7,9 +7,11 @@
 
 using namespace std;
 
-
+<<<<<<< HEAD
 CTextFile::CTextFile(const int id,const int score,const string& path,bool toprocess,void *segmenter): \
-
+=======
+CTextFile::CTextFile(const int id,const int score,const string& path,bool toprocess): \
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 	m_iFileID(id),m_strFilePath(path),m_fNeedProcess(toprocess),m_WordData(NULL) // open the file here
 {
     m_fValidFile=true;
@@ -56,7 +58,7 @@ CTextFile::CTextFile(const int id,const int score,const string& path,bool toproc
         m_iFileType=DOC;
     }
     m_strFileNameLC = m_strFileName;
-
+<<<<<<< HEAD
     m_strFileNamePinyinLC = m_strFileName;
     extern string pinyinize(void* seg, char* data, size_t len, FILE *result);
     char *data;
@@ -69,7 +71,9 @@ CTextFile::CTextFile(const int id,const int score,const string& path,bool toproc
     transform(m_strFileNameLC.begin(), m_strFileNameLC.end(), m_strFileNameLC.begin(), (int (*)(int))tolower);
     //printf("pinyin: %p %s %s\n",segmenter, m_strFileName.c_str(),m_strFileNamePinyinLC.c_str());
     transform(m_strFileNamePinyinLC.begin(), m_strFileNamePinyinLC.end(), m_strFileNamePinyinLC.begin(), (int (*)(int))tolower);
-
+=======
+    transform(m_strFileNameLC.begin(), m_strFileNameLC.end(), m_strFileNameLC.begin(), (int (*)(int))tolower);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     // process file contentes
     if (toprocess)
     {
@@ -283,6 +287,7 @@ struct TEXTFILE_SERIALIZATION
     long long worddatasize;
 };
 
+<<<<<<< HEAD
 void writeString(gzFile& fp,string s)
 {
     size_t len=s.length();
@@ -299,15 +304,38 @@ void readString(gzFile& fp,string& s)
     {
         char *temp = new char[len+1];
         gzread(fp,temp,len);
+=======
+void writeString(FILE* fp,string s)
+{
+    size_t len=s.length();
+    fwrite(&len,sizeof(len),1,fp);
+    fwrite(s.data(),len,1,fp);
+}
 
+void readString(FILE* fp,string& s)
+{
+    size_t len=0;
+
+    fread(&len,sizeof(len),1,fp);
+    if (len!=0)
+    {
+        char *temp = new char[len+1];
+        fread(temp,len,1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
         temp[len]=0;
         s=temp;
         delete[] temp;
     }else s="";
 }
 
+<<<<<<< HEAD
 void CTextFile::store(gzFile& fp)
 {
+=======
+void CTextFile::store(FILE* fp)
+{
+    assert(fp!=NULL);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     TEXTFILE_SERIALIZATION d;
     d.id = m_iFileID;
     d.filesize = m_iFileSize;
@@ -320,11 +348,18 @@ void CTextFile::store(gzFile& fp)
     d.utf8 = m_fUTF8?1:0;
     d.valid = m_fValidFile?1:0;
     d.worddatasize = (m_WordData==NULL)?0:m_WordData->size();
+<<<<<<< HEAD
     gzwrite(fp,&d,sizeof(d));
 
     writeString(fp,m_strFilePath);
 	writeString(fp,m_strFileName);
 	writeString(fp,m_strFileNamePinyinLC);
+=======
+    fwrite(&d,sizeof(d),1,fp);
+
+    writeString(fp,m_strFilePath);
+	writeString(fp,m_strFileName);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 	writeString(fp,m_strFileDirectory);
 	writeString(fp,m_strFileExt);
 
@@ -335,17 +370,27 @@ void CTextFile::store(gzFile& fp)
         {
             pair<int,pair<int,streampos> > p;
             p=(*m_WordData)[i];
+<<<<<<< HEAD
             gzwrite(fp,&p,sizeof(p));
-
+=======
+            fwrite(&p,sizeof(p),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
         }
 	}
 }
 
-
+<<<<<<< HEAD
 CTextFile::CTextFile(gzFile& fp):m_WordData(NULL) // open the file here
 {
     TEXTFILE_SERIALIZATION d;
     gzread(fp,&d,sizeof(d));
+=======
+CTextFile::CTextFile(FILE* fp):m_WordData(NULL) // open the file here
+{
+    assert(fp!=NULL);
+    TEXTFILE_SERIALIZATION d;
+    fread(&d,sizeof(d),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     m_iFileID=d.id;
     m_iFileType=d.filetype;
     m_iBaseScore=d.basescore;
@@ -360,7 +405,10 @@ CTextFile::CTextFile(gzFile& fp):m_WordData(NULL) // open the file here
 
     readString(fp,m_strFilePath);
 	readString(fp,m_strFileName);
+<<<<<<< HEAD
 	readString(fp,m_strFileNamePinyinLC);
+=======
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 	readString(fp,m_strFileDirectory);
 	readString(fp,m_strFileExt);
 	m_strFileNameLC = m_strFileName;
@@ -371,8 +419,11 @@ CTextFile::CTextFile(gzFile& fp):m_WordData(NULL) // open the file here
         for (long long i=0;i<d.worddatasize;i++)
         {
             pair<int,pair<int,streampos> > p;
+<<<<<<< HEAD
             gzread(fp,&p,sizeof(p));
-
+=======
+            fread(&p,sizeof(p),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
             m_WordData->push_back(p);
         }
     }

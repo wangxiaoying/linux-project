@@ -756,8 +756,10 @@ int main (int argc, gchar *argv[])
     g_is_quiting = FALSE;
     g_change_index = FALSE;
 
+<<<<<<< HEAD
     idx_init_dict();
-
+=======
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     init_settings();
     fp = fopen("index", "r");
     if(NULL == fp)

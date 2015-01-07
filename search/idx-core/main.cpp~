@@ -160,8 +160,11 @@ struct TASK_DESC
     int done;
 };
 
+<<<<<<< HEAD
 void *mmsegManager;
 
+=======
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 int __create_database(void* files, const char *filterExt, void **db, bool multi_core, bool pinyin_conversion)
 {
     string strExts;
@@ -178,8 +181,10 @@ int __create_database(void* files, const char *filterExt, void **db, bool multi_
 
     if (files!=NULL)
     {
+<<<<<<< HEAD
         void *seg = mmseg_get_segmenter(mmsegManager);
-
+=======
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
         vector<pair<string,int> > *vFiles = (vector<pair<string,int> >*)files;
         sort(vFiles->begin(),vFiles->end(),cmpPair2nd<string,int>);
         for (vector<pair<string,int> >::const_iterator it=vFiles->begin();it!=vFiles->end();it++)
@@ -188,7 +193,11 @@ int __create_database(void* files, const char *filterExt, void **db, bool multi_
             {
                 cout<<it->first<<endl;
             }
+<<<<<<< HEAD
             dbDefault->IncludeTextFile(seg,it->first,strExts,it->second);
+=======
+            dbDefault->IncludeTextFile(it->first,strExts,it->second);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
         }
     }
     // Create thread pool and assign jobs
@@ -288,6 +297,7 @@ extern "C" int idx_query(void *db, char* queryString, bool onlyInName, int maxRe
     else
         return -1;
 }
+<<<<<<< HEAD
 
 void loadDict();
 extern "C" int idx_init_dict()
@@ -298,6 +308,10 @@ extern "C" int idx_init_dict()
 }
 
 int main233(int argc, char* argv[])
+=======
+
+int coremain(int argc, char* argv[])
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 {
     atexit(Object::onExit);
 
@@ -361,6 +375,7 @@ int main233(int argc, char* argv[])
     pref.file_txt=1;
     pref.get_document=1;
     pref.multi_core=1;
+<<<<<<< HEAD
     if (true)
     {
         idx_load_database("/tmp/1.db",&db);
@@ -374,6 +389,15 @@ int main233(int argc, char* argv[])
         }
         idx_save_database("/tmp/1.db",db);
 	}
+=======
+	cond=idx_create_database_task(fileCollection,&pref,&db);
+	while (*cond==2333)
+	{
+        sleep(1);
+	}
+    //idx_load_database("/tmp/1.db",&db);
+	idx_save_database("/tmp/1.db",db);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 	// Process Queries
 	cout<<"Enter q! to quit"<<endl;
 	for (;;)

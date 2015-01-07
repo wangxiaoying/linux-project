@@ -38,8 +38,8 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Linker>
+			<Add option="-lz" />
 			<Add library="libpthread" />
-			<Add library="libz" />
 		</Linker>
 		<Unit filename="AtomicInteger.h" />
 		<Unit filename="CConstants.h" />
@@ -55,6 +55,8 @@
 		<Unit filename="Object.cpp" />
 		<Unit filename="Object.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="mseg.cpp" />
+		<Unit filename="mseg.h" />
 		<Unit filename="pch.h">
 			<Option weight="0" />
 		</Unit>
@@ -64,6 +66,7 @@
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

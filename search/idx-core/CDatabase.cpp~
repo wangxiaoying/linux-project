@@ -436,9 +436,11 @@ int CDatabase::loadTrieTree(struct TRIENODE* node, gzFile& fp, const struct TRIE
         for (int i=0;i<d.nRecordCount;i++)
         {
             RECORD_SERIALIZATION rd;
-
+<<<<<<< HEAD
             gzread(fp,&rd,sizeof(rd));
-
+=======
+            fread(&rd,sizeof(rd),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
             struct RECORD r, *p;
             r.iFileID = rd.iFileID;
             r.iPosition = rd.iPosition;
@@ -453,9 +455,11 @@ int CDatabase::loadTrieTree(struct TRIENODE* node, gzFile& fp, const struct TRIE
     }
 	for (int i=0;i<sizeof(node->next)/sizeof(struct TRIENODE*);i++)
 	{
-
+<<<<<<< HEAD
         char ch = gzgetc(fp);
-
+=======
+        char ch = fgetc(fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
         if (ch=='0')
         {
             node->next[i]=NULL;
@@ -468,9 +472,11 @@ int CDatabase::loadTrieTree(struct TRIENODE* node, gzFile& fp, const struct TRIE
 	return cnt;
 }
 
-
+<<<<<<< HEAD
 int CDatabase::saveTrieTree(const struct TRIENODE* node, gzFile& fp)
-
+=======
+int CDatabase::saveTrieTree(const struct TRIENODE* node, FILE* fp)
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 {
 	int cnt=0;
 	{
@@ -478,18 +484,22 @@ int CDatabase::saveTrieTree(const struct TRIENODE* node, gzFile& fp)
         d.iWordID = node->iWordID;
         d.iCntOccurrence = node->iCntOccurrence;
         d.nRecordCount = countRecords(node->records);
-
+<<<<<<< HEAD
         gzwrite(fp,&d,sizeof(d));
-
+=======
+        fwrite(&d,sizeof(d),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
         struct RECORD *p = node->records;
         for (int i=0;i<d.nRecordCount;i++)
         {
             RECORD_SERIALIZATION rd;
             rd.iFileID = p->iFileID;
             rd.iPosition = p->iPosition;
-
+<<<<<<< HEAD
             gzwrite(fp,&rd,sizeof(rd));
-
+=======
+            fwrite(&rd,sizeof(rd),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
             p=p->nextrec;
         }
     }
@@ -497,13 +507,19 @@ int CDatabase::saveTrieTree(const struct TRIENODE* node, gzFile& fp)
 	{
 		if (node->next[i]!=NULL)
 		{
-
+<<<<<<< HEAD
             gzputc(fp,'1');
             cnt+=saveTrieTree(node->next[i],fp);
 		}else
 		{
             gzputc(fp,'0');
-
+=======
+            fputc('1',fp);
+            cnt+=saveTrieTree(node->next[i],fp);
+		}else
+		{
+            fputc('0',fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 		}
 	}
 	return cnt;
@@ -511,17 +527,22 @@ int CDatabase::saveTrieTree(const struct TRIENODE* node, gzFile& fp)
 
 bool CDatabase::load(const string& dbFile)
 {
-
+<<<<<<< HEAD
     gzFile fp=gzopen(dbFile.c_str(),"rb");
-
+=======
+    FILE* fp=fopen(dbFile.c_str(),"rb");
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     if (NULL==fp) return false;
     LockTextFiles();
     DATABASE_SERIALIZATION d;
     d.numFiles=vFileList.size();
     d.cntWord=m_cntWord;
     d.cntRecords=m_cntRecords;
-
+<<<<<<< HEAD
     gzread(fp,&d,sizeof(d));
+=======
+    fread(&d,sizeof(d),1,fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     m_cntWord=d.cntWord;
     m_cntRecords=d.cntRecords;
     m_idxTask=d.numFiles+1;
@@ -541,8 +562,10 @@ bool CDatabase::load(const string& dbFile)
         assert(ret==m_cntRecords);
 	}
 
-
+<<<<<<< HEAD
     gzclose(fp);
-
+=======
+    fclose(fp);
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
     return true;
 }

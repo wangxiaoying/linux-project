@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char* argv[])
+{
+    printf("starting... %s\n",argv[1]);
+    if (0==vfork())
+    {
+        if (argc==2)
+            execlp(argv[1], NULL);
+        else
+        {
+<<<<<<< HEAD
+            char **args = malloc(sizeof(char*)*(argc-2+1));
+=======
+            char **args = malloc(sizeof(char*)*(argc-2));
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
+            int i;
+            for (i=2;i<argc;i++)
+            {
+                args[i-2]=argv[i];
+            }
+<<<<<<< HEAD
+            args[argc-2] = 0;
+=======
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
+            execvp(argv[1], args);
+        }
+    }
+    return 0;
+}

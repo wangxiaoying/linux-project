@@ -1,4 +1,7 @@
 bin
 obj
+<<<<<<< HEAD
+=======
 *.cbp
+>>>>>>> 4b6634ff58d18dd0c8f6133cd017d650907a9e83
 index
