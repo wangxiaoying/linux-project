@@ -1,0 +1,683 @@
+# depslib dependency file v1.0
+1211899854 source:m:\libmmseg\assert.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"csr_assert.h"
+
+1418989436 t.h"
+
+1211899854 m:\libmmseg\csr_assert.h
+
+1211899854 source:m:\libmmseg\bsd_getopt.c
+	"bsd_getopt.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1211899854 
+
+1211899854 m:\libmmseg\bsd_getopt.h
+
+1211899854 source:m:\libmmseg\csr_mmap.c
+	"os.h"
+	"csr_mmap.h"
+	"csr_utils.h"
+	<fcntl.h>
+	<stdio.h>
+	<io.h>
+	<string.h>
+	<sys/types.h>
+	<sys/timeb.h>
+
+1211899854 .h>
+
+1419835144 m:\libmmseg\os.h
+	"config.win.h"
+	<unistd.h>
+	<fcntl.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/param.h>
+	<sys/mman.h>
+	<windows.h>
+
+1211899854 >
+
+1211899852 m:\libmmseg\config.win.h
+
+1211899854 m:\libmmseg\csr_mmap.h
+	"csr_typedefs.h"
+
+1211899854 efs.h"
+
+1211899852 m:\libmmseg\csr_typedefs.h
+
+1211899854 m:\libmmseg\csr_utils.h
+	"csr_typedefs.h"
+
+1211899854 source:m:\libmmseg\csr_utils.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"csr_utils.h"
+	<stdarg.h>
+	<sys/types.h>
+	<sys/timeb.h>
+	<time.h>
+	<sys/types.h>
+	<sys/timeb.h>
+
+1418990174 source:m:\libmmseg\main.cpp
+	<fstream>
+	<string>
+	<iostream>
+	<cstdio>
+	<algorithm>
+	<map>
+	<stdlib.h>
+	"bsd_getopt.h"
+	"UnigramCorpusReader.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"SegmenterManager.h"
+	"Segmenter.h"
+	"csr_utils.h"
+
+1211899854 .h"
+
+1211899852 source:m:\libmmseg\mmthunk.cpp
+	"csr_typedefs.h"
+	"mmthunk.h"
+
+1211899854 "
+
+1418990058 m:\libmmseg\mmthunk.h
+	<vector>
+	<math.h>
+	"UnigramDict.h"
+	"freelist.h"
+
+1211899854 h"
+
+1211899854 m:\libmmseg\unigramdict.h
+	<string>
+	"darts.h"
+
+1211899854 m:\libmmseg\darts.h
+	<vector>
+	<cstring>
+	<cstdio>
+	"csr_typedefs.h"
+	<zlib.h>
+
+1211899854 m:\libmmseg\freelist.h
+	<vector>
+
+1211899854 source:m:\libmmseg\segmenter.cpp
+	"Segmenter.h"
+	"Utf8_16.h"
+	"Singleton.h"
+	"csr_assert.h"
+	<algorithm>
+	<math.h>
+	"Utf8_16.h"
+
+1418989396 m:\libmmseg\segmenter.h
+	<vector>
+	<hash_map>
+	<ext/hash_map>
+	"SegmentPkg.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"csr_typedefs.h"
+	"freelist.h"
+	"mmthunk.h"
+
+1211899854 m:\libmmseg\segmentpkg.h
+	<vector>
+	"Singleton.h"
+	"csr_typedefs.h"
+	"tolowercase.h"
+
+1211899854 se.h"
+
+1211899854 m:\libmmseg\singleton.h
+	<cstdlib>
+	<stdlib.h>
+
+1211899854 m:\libmmseg\tolowercase.h
+
+1211899854 m:\libmmseg\synonymsdict.h
+	<string>
+	<map>
+	"darts.h"
+	"csr_mmap.h"
+
+1211899854 m:\libmmseg\utf8_16.h
+	<stdio.h>
+	<assert.h>
+	"csr_typedefs.h"
+
+1211899854 source:m:\libmmseg\segmentermanager.cpp
+	"Segmenter.h"
+	"SegmenterManager.h"
+
+1211899854 Manager.h"
+
+1211899854 m:\libmmseg\segmentermanager.h
+	<string>
+	"freelist.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"Segmenter.h"
+
+1211899854 source:m:\libmmseg\stringtokenizer.cpp
+	"StringTokenizer.h"
+
+1211899854 enizer.h"
+
+1211899854 m:\libmmseg\stringtokenizer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string>
+
+1211899854 source:m:\libmmseg\synonymsdict.cpp
+	<algorithm>
+	<fstream>
+	<iostream>
+	<map>
+	"UnigramCorpusReader.h"
+	"SynonymsDict.h"
+
+1211899854 ict.h"
+
+1211899854 m:\libmmseg\unigramcorpusreader.h
+	<string>
+	<vector>
+	"ICorpusReader.h"
+	"UnigramRecord.h"
+
+1211899854 cord.h"
+
+1211899852 m:\libmmseg\icorpusreader.h
+
+1211899854 m:\libmmseg\unigramrecord.h
+	<string>
+	"csr.h"
+
+1211899854 m:\libmmseg\csr.h
+	"csr_typedefs.h"
+	"Utf8_16.h"
+	"StringTokenizer.h"
+
+1418989436 source:m:\libmmseg\segmentpkg.cpp
+	"csr_typedefs.h"
+	"SegmentPkg.h"
+	<stdio.h>
+	<malloc.h>
+	<stdexcept>
+	"Segmenter.h"
+	"csr_assert.h"
+
+1418989490 source:m:\libmmseg\unigramcorpusreader.cpp
+	<algorithm>
+	<fstream>
+	<iostream>
+	<string.h>
+	"UnigramCorpusReader.h"
+	"UnigramRecord.h"
+	"csr_utils.h"
+	"Utf8_16.h"
+
+1211899854 source:m:\libmmseg\unigramdict.cpp
+	"UnigramCorpusReader.h"
+	"UnigramDict.h"
+
+1211899854 ct.h"
+
+1211899854 source:m:\libmmseg\unigramrecord.cpp
+	"UnigramRecord.h"
+
+1211899854 source:m:\libmmseg\utf8_16.cpp
+	<stdio.h>
+	"csr_assert.h"
+	"Utf8_16.h"
+
+1418990174 source:/home/daryl/桌面/libmmseg/main.cpp
+	<fstream>
+	<string>
+	<iostream>
+	<cstdio>
+	<algorithm>
+	<map>
+	<stdlib.h>
+	"bsd_getopt.h"
+	"UnigramCorpusReader.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"SegmenterManager.h"
+	"Segmenter.h"
+	"csr_utils.h"
+
+1211899854 /home/daryl/桌面/libmmseg/bsd_getopt.h
+
+1211899854 /home/daryl/桌面/libmmseg/UnigramCorpusReader.h
+	<string>
+	<vector>
+	"ICorpusReader.h"
+	"UnigramRecord.h"
+
+1211899852 /home/daryl/桌面/libmmseg/ICorpusReader.h
+
+1211899854 /home/daryl/桌面/libmmseg/UnigramRecord.h
+	<string>
+	"csr.h"
+
+1211899854 /home/daryl/桌面/libmmseg/csr.h
+	"csr_typedefs.h"
+	"Utf8_16.h"
+	"StringTokenizer.h"
+
+1211899852 /home/daryl/桌面/libmmseg/csr_typedefs.h
+
+1211899854 /home/daryl/桌面/libmmseg/Utf8_16.h
+	<stdio.h>
+	<assert.h>
+	"csr_typedefs.h"
+
+1211899854 /home/daryl/桌面/libmmseg/StringTokenizer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string>
+
+1211899854 /home/daryl/桌面/libmmseg/UnigramDict.h
+	<string>
+	"darts.h"
+
+1211899854 /home/daryl/桌面/libmmseg/darts.h
+	<vector>
+	<cstring>
+	<cstdio>
+	"csr_typedefs.h"
+	<zlib.h>
+
+1211899854 /home/daryl/桌面/libmmseg/SynonymsDict.h
+	<string>
+	<map>
+	"darts.h"
+	"csr_mmap.h"
+
+1211899854 /home/daryl/桌面/libmmseg/csr_mmap.h
+	"csr_typedefs.h"
+
+1211899854 /home/daryl/桌面/libmmseg/SegmenterManager.h
+	<string>
+	"freelist.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"Segmenter.h"
+
+1211899854 /home/daryl/桌面/libmmseg/freelist.h
+	<vector>
+
+1418989396 /home/daryl/桌面/libmmseg/Segmenter.h
+	<vector>
+	<hash_map>
+	<ext/hash_map>
+	"SegmentPkg.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"csr_typedefs.h"
+	"freelist.h"
+	"mmthunk.h"
+
+1211899854 /home/daryl/桌面/libmmseg/SegmentPkg.h
+	<vector>
+	"Singleton.h"
+	"csr_typedefs.h"
+	"tolowercase.h"
+
+1211899854 /home/daryl/桌面/libmmseg/Singleton.h
+	<cstdlib>
+	<stdlib.h>
+
+1211899854 /home/daryl/桌面/libmmseg/tolowercase.h
+
+1418990058 /home/daryl/桌面/libmmseg/mmthunk.h
+	<vector>
+	<math.h>
+	"UnigramDict.h"
+	"freelist.h"
+
+1211899854 /home/daryl/桌面/libmmseg/csr_utils.h
+	"csr_typedefs.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/assert.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"csr_assert.h"
+
+1211899854 /home/daryl/桌面/libmmseg/csr_assert.h
+
+1211899854 source:/home/daryl/桌面/libmmseg/bsd_getopt.c
+	"bsd_getopt.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1211899854 source:/home/daryl/桌面/libmmseg/csr_mmap.c
+	"os.h"
+	"csr_mmap.h"
+	"csr_utils.h"
+	<fcntl.h>
+	<stdio.h>
+	<io.h>
+	<string.h>
+	<sys/types.h>
+	<sys/timeb.h>
+
+1419835144 /home/daryl/桌面/libmmseg/os.h
+	"config.win.h"
+	<unistd.h>
+	<fcntl.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/param.h>
+	<sys/mman.h>
+	<windows.h>
+
+1211899852 /home/daryl/桌面/libmmseg/config.win.h
+
+1211899854 source:/home/daryl/桌面/libmmseg/csr_utils.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"csr_utils.h"
+	<stdarg.h>
+	<sys/types.h>
+	<sys/timeb.h>
+	<time.h>
+	<sys/types.h>
+	<sys/timeb.h>
+
+1211899852 source:/home/daryl/桌面/libmmseg/mmthunk.cpp
+	"csr_typedefs.h"
+	"mmthunk.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/segmenter.cpp
+	"Segmenter.h"
+	"Utf8_16.h"
+	"Singleton.h"
+	"csr_assert.h"
+	<algorithm>
+	<math.h>
+	"Utf8_16.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/SegmenterManager.cpp
+	"Segmenter.h"
+	"SegmenterManager.h"
+
+1418989436 source:/home/daryl/桌面/libmmseg/SegmentPkg.cpp
+	"csr_typedefs.h"
+	"SegmentPkg.h"
+	<stdio.h>
+	<malloc.h>
+	<stdexcept>
+	"Segmenter.h"
+	"csr_assert.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/StringTokenizer.cpp
+	"StringTokenizer.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/SynonymsDict.cpp
+	<algorithm>
+	<fstream>
+	<iostream>
+	<map>
+	"UnigramCorpusReader.h"
+	"SynonymsDict.h"
+
+1418989490 source:/home/daryl/桌面/libmmseg/UnigramCorpusReader.cpp
+	<algorithm>
+	<fstream>
+	<iostream>
+	<string.h>
+	"UnigramCorpusReader.h"
+	"UnigramRecord.h"
+	"csr_utils.h"
+	"Utf8_16.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/UnigramDict.cpp
+	"UnigramCorpusReader.h"
+	"UnigramDict.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/UnigramRecord.cpp
+	"UnigramRecord.h"
+
+1211899854 source:/home/daryl/桌面/libmmseg/Utf8_16.cpp
+	<stdio.h>
+	"csr_assert.h"
+	"Utf8_16.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\assert.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"csr_assert.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\csr_assert.h
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\bsd_getopt.c
+	"bsd_getopt.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1211899854 c:\users\daryl\desktop\libmmseg\bsd_getopt.h
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\csr_mmap.c
+	"os.h"
+	"csr_mmap.h"
+	"csr_utils.h"
+	<fcntl.h>
+	<stdio.h>
+	<io.h>
+	<string.h>
+	<sys/types.h>
+	<sys/timeb.h>
+
+1419835144 c:\users\daryl\desktop\libmmseg\os.h
+	"config.win.h"
+	<unistd.h>
+	<fcntl.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<sys/param.h>
+	<sys/mman.h>
+	<windows.h>
+
+1211899852 c:\users\daryl\desktop\libmmseg\config.win.h
+
+1211899854 c:\users\daryl\desktop\libmmseg\csr_mmap.h
+	"csr_typedefs.h"
+
+1211899852 c:\users\daryl\desktop\libmmseg\csr_typedefs.h
+
+1211899854 c:\users\daryl\desktop\libmmseg\csr_utils.h
+	"csr_typedefs.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\csr_utils.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"csr_utils.h"
+	<stdarg.h>
+	<sys/types.h>
+	<sys/timeb.h>
+	<time.h>
+	<sys/types.h>
+	<sys/timeb.h>
+
+1418990174 source:c:\users\daryl\desktop\libmmseg\main.cpp
+	<fstream>
+	<string>
+	<iostream>
+	<cstdio>
+	<algorithm>
+	<map>
+	<stdlib.h>
+	"bsd_getopt.h"
+	"UnigramCorpusReader.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"SegmenterManager.h"
+	"Segmenter.h"
+	"csr_utils.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\unigramcorpusreader.h
+	<string>
+	<vector>
+	"ICorpusReader.h"
+	"UnigramRecord.h"
+
+1211899852 c:\users\daryl\desktop\libmmseg\icorpusreader.h
+
+1211899854 c:\users\daryl\desktop\libmmseg\unigramrecord.h
+	<string>
+	"csr.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\csr.h
+	"csr_typedefs.h"
+	"Utf8_16.h"
+	"StringTokenizer.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\utf8_16.h
+	<stdio.h>
+	<assert.h>
+	"csr_typedefs.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\stringtokenizer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string>
+
+1211899854 c:\users\daryl\desktop\libmmseg\unigramdict.h
+	<string>
+	"darts.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\darts.h
+	<vector>
+	<cstring>
+	<cstdio>
+	"csr_typedefs.h"
+	<zlib.h>
+
+1211899854 c:\users\daryl\desktop\libmmseg\synonymsdict.h
+	<string>
+	<map>
+	"darts.h"
+	"csr_mmap.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\segmentermanager.h
+	<string>
+	"freelist.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"Segmenter.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\freelist.h
+	<vector>
+
+1418989396 c:\users\daryl\desktop\libmmseg\segmenter.h
+	<vector>
+	<hash_map>
+	<ext/hash_map>
+	"SegmentPkg.h"
+	"UnigramDict.h"
+	"SynonymsDict.h"
+	"csr_typedefs.h"
+	"freelist.h"
+	"mmthunk.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\segmentpkg.h
+	<vector>
+	"Singleton.h"
+	"csr_typedefs.h"
+	"tolowercase.h"
+
+1211899854 c:\users\daryl\desktop\libmmseg\singleton.h
+	<cstdlib>
+	<stdlib.h>
+
+1211899854 c:\users\daryl\desktop\libmmseg\tolowercase.h
+
+1418990058 c:\users\daryl\desktop\libmmseg\mmthunk.h
+	<vector>
+	<math.h>
+	"UnigramDict.h"
+	"freelist.h"
+
+1211899852 source:c:\users\daryl\desktop\libmmseg\mmthunk.cpp
+	"csr_typedefs.h"
+	"mmthunk.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\segmenter.cpp
+	"Segmenter.h"
+	"Utf8_16.h"
+	"Singleton.h"
+	"csr_assert.h"
+	<algorithm>
+	<math.h>
+	"Utf8_16.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\segmentermanager.cpp
+	"Segmenter.h"
+	"SegmenterManager.h"
+
+1418989436 source:c:\users\daryl\desktop\libmmseg\segmentpkg.cpp
+	"csr_typedefs.h"
+	"SegmentPkg.h"
+	<stdio.h>
+	<malloc.h>
+	<stdexcept>
+	"Segmenter.h"
+	"csr_assert.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\stringtokenizer.cpp
+	"StringTokenizer.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\synonymsdict.cpp
+	<algorithm>
+	<fstream>
+	<iostream>
+	<map>
+	"UnigramCorpusReader.h"
+	"SynonymsDict.h"
+
+1418989490 source:c:\users\daryl\desktop\libmmseg\unigramcorpusreader.cpp
+	<algorithm>
+	<fstream>
+	<iostream>
+	<string.h>
+	"UnigramCorpusReader.h"
+	"UnigramRecord.h"
+	"csr_utils.h"
+	"Utf8_16.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\unigramdict.cpp
+	"UnigramCorpusReader.h"
+	"UnigramDict.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\unigramrecord.cpp
+	"UnigramRecord.h"
+
+1211899854 source:c:\users\daryl\desktop\libmmseg\utf8_16.cpp
+	<stdio.h>
+	"csr_assert.h"
+	"Utf8_16.h"
+

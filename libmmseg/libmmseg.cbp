@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="libmmseg" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/libmmseg" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/mmseg" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="ICorpusReader.h" />
+		<Unit filename="SegmentPkg.cpp" />
+		<Unit filename="SegmentPkg.h" />
+		<Unit filename="Segmenter.h" />
+		<Unit filename="SegmenterManager.cpp" />
+		<Unit filename="SegmenterManager.h" />
+		<Unit filename="Singleton.h" />
+		<Unit filename="StringTokenizer.cpp" />
+		<Unit filename="StringTokenizer.h" />
+		<Unit filename="SynonymsDict.cpp" />
+		<Unit filename="SynonymsDict.h" />
+		<Unit filename="UnigramCorpusReader.cpp" />
+		<Unit filename="UnigramCorpusReader.h" />
+		<Unit filename="UnigramDict.cpp" />
+		<Unit filename="UnigramDict.h" />
+		<Unit filename="UnigramRecord.cpp" />
+		<Unit filename="UnigramRecord.h" />
+		<Unit filename="Utf8_16.cpp" />
+		<Unit filename="Utf8_16.h" />
+		<Unit filename="assert.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bsd_getopt.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="bsd_getopt.h" />
+		<Unit filename="config.win.h" />
+		<Unit filename="csr.h" />
+		<Unit filename="csr_assert.h" />
+		<Unit filename="csr_mmap.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="csr_mmap.h" />
+		<Unit filename="csr_pool.h" />
+		<Unit filename="csr_typedefs.h" />
+		<Unit filename="csr_utils.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="csr_utils.h" />
+		<Unit filename="darts.h" />
+		<Unit filename="freelist.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="mmthunk.cpp" />
+		<Unit filename="mmthunk.h" />
+		<Unit filename="os.h" />
+		<Unit filename="scoped_ptr.h" />
+		<Unit filename="segmenter.cpp" />
+		<Unit filename="tolowercase.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
