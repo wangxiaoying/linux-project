@@ -11,6 +11,7 @@ using namespace std;
 #include "searching.h"
 #include <sys/stat.h>
 #include <fcntl.h>
+string mainCal(string expr);
 
 extern bool fVerbose;
 
@@ -173,7 +174,23 @@ scanningfin:
             r->type=SET;
         }
 
+        if(pref.get_cal)
+        {
+            string expr = strCmd;
+            string calResult = mainCal(expr);
+            string fullExpr = expr + " = " + calResult;
 
+
+            //char* result = calResult;
+            if(calResult != "false")
+            {
+                r=&(*results)[i++];
+                strcpy(r->name,calResult.c_str());
+                strcpy(r->path,fullExpr.c_str());
+                r->type=CAL;
+            }
+
+        }
         if (pref.get_web)
         {
             r=&(*results)[i++];
@@ -192,6 +209,7 @@ scanningfin:
             }
         }
 	}
+
 	for (vector<RESULTTYPE>::const_iterator it=cFinalResult.begin();it!=cFinalResult.end() && i<maxResults;it++)
 	{
 		const RESID resid=CResultPool::resid(*it);

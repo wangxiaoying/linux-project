@@ -54,6 +54,8 @@
 		<Unit filename="Database.h" />
 		<Unit filename="Object.cpp" />
 		<Unit filename="Object.h" />
+		<Unit filename="calculate.cpp" />
+		<Unit filename="calculate.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="mseg.cpp" />
 		<Unit filename="mseg.h" />

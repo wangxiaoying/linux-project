@@ -1,23 +1,40 @@
 # depslib dependency file v1.0
-1419166849 source:/home/daryl/桌面/idx-core/main.cpp
+1419331534 source:/home/daryl/桌面/idx-core/main.cpp
 	"pch.h"
 	"style.h"
 	"AtomicInteger.h"
 	"Object.h"
 	"Database.h"
 	"CDynamicVector.h"
+	"pch.h"
+	"style.h"
+	"AtomicInteger.h"
+	"Object.h"
+	"Database.h"
+	"CDynamicVector.h"
+	"CThread.h"
+	"searching.h"
+	<algorithm>
+	<string>
+	<sys/types.h>
+	<sys/stat.h>
+	<fcntl.h>
+	<dirent.h>
+	<unistd.h>
 
 1419166849 ector.h"
 
-1419162569 /home/daryl/桌面/idx-core/Object.h
+1419162570 /home/daryl/桌面/idx-core/Object.h
 
 1418982690 source:/home/daryl/桌面/idx-core/Object.cpp
+	<stdio.h>
+	"Object.h"
 	<stdio.h>
 	"Object.h"
 
 1419208940 
 
-1419165389 /home/daryl/桌面/idx-core/pch.h
+1419309840 /home/daryl/桌面/idx-core/pch.h
 	<stdio.h>
 	<stdlib.h>
 	<stdint.h>
@@ -27,12 +44,30 @@
 	<malloc.h>
 	<string.h>
 	<pthread.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdint.h>
+	<stddef.h>
+	<errno.h>
+	<assert.h>
+	<time.h>
+	<malloc.h>
+	<string.h>
+	<memory.h>
+	<ctype.h>
+	<pthread.h>
 
 1419211760 >
 
-1418982809 /home/daryl/桌面/idx-core/style.h
+1418982810 /home/daryl/桌面/idx-core/style.h
 
-1419167192 /home/daryl/桌面/idx-core/Database.h
+1419815313 /home/daryl/桌面/idx-core/Database.h
+	"CConstants.h"
+	"CCriticalSection.h"
+	"CTextFile.h"
+	"CResultPool.h"
+	"AtomicInteger.h"
+	<vector>
 	"CConstants.h"
 	"CCriticalSection.h"
 	"CTextFile.h"
@@ -40,41 +75,62 @@
 	"AtomicInteger.h"
 	<vector>
 
-1419164332 /home/daryl/桌面/idx-core/AtomicInteger.h
+1419208822 /home/daryl/桌面/idx-core/AtomicInteger.h
 
-1419163697 /home/daryl/桌面/idx-core/CCriticalSection.h
+1419163698 /home/daryl/桌面/idx-core/CCriticalSection.h
 
-1419166401 /home/daryl/桌面/idx-core/CDynamicVector.h
+1419258551 /home/daryl/桌面/idx-core/CDynamicVector.h
+	<vector>
+	"AtomicInteger.h"
+	"CCriticalSection.h"
 	<vector>
 	"AtomicInteger.h"
 	"CCriticalSection.h"
 
 1419166402 Section.h"
 
-1419166964 /home/daryl/桌面/idx-core/CTextFile.h
+1419815371 /home/daryl/桌面/idx-core/CTextFile.h
 	"Object.h"
 	"CDynamicVector.h"
 	<iostream>
 	<fstream>
 	<string>
+	"Object.h"
+	"CDynamicVector.h"
+	<iostream>
+	<fstream>
+	<string>
+	"searching.h"
+	<zlib.h>
 
-1419165996 source:/home/daryl/桌面/idx-core/CTextFile.cpp
+1419815426 source:/home/daryl/桌面/idx-core/CTextFile.cpp
 	"pch.h"
 	"CConstants.h"
 	"CTextFile.h"
+	"pch.h"
+	"CConstants.h"
+	"CTextFile.h"
+	<sys/stat.h>
+	<fcntl.h>
+	<algorithm>
 
 1419165996 .h"
 
-1419165918 /home/daryl/桌面/idx-core/CConstants.h
+1419320880 /home/daryl/桌面/idx-core/CConstants.h
 
-1419166889 source:/home/daryl/桌面/idx-core/CResultPool.cpp
+1419315447 source:/home/daryl/桌面/idx-core/CResultPool.cpp
+	"pch.h"
+	"CResultPool.h"
+	"CConstants.h"
 	"pch.h"
 	"CResultPool.h"
 	"CConstants.h"
 
 1419166890 s.h"
 
-1419166838 /home/daryl/桌面/idx-core/CResultPool.h
+1419315464 /home/daryl/桌面/idx-core/CResultPool.h
+	<algorithm>
+	<vector>
 	<algorithm>
 	<vector>
 
@@ -165,94 +221,9 @@
 	<zlib.h>
 	<iomanip>
 
-1419309840 /home/daryl/桌面/idx-core/pch.h
-	<stdio.h>
-	<stdlib.h>
-	<stdint.h>
-	<stddef.h>
-	<errno.h>
-	<assert.h>
-	<time.h>
-	<malloc.h>
-	<string.h>
-	<memory.h>
-	<ctype.h>
-	<pthread.h>
-
-1419320880 /home/daryl/桌面/idx-core/CConstants.h
-
-
-1419815313 /home/daryl/桌面/idx-core/Database.h
-	"CConstants.h"
-	"CCriticalSection.h"
-	"CTextFile.h"
-	"CResultPool.h"
-	"AtomicInteger.h"
-	<vector>
-
-1419163698 /home/daryl/桌面/idx-core/CCriticalSection.h
-
-1419815371 /home/daryl/桌面/idx-core/CTextFile.h
-	"Object.h"
-	"CDynamicVector.h"
-	<iostream>
-	<fstream>
-	<string>
-	"searching.h"
-	<zlib.h>
-
-1419162570 /home/daryl/桌面/idx-core/Object.h
-
-1419258551 /home/daryl/桌面/idx-core/CDynamicVector.h
-	<vector>
-	"AtomicInteger.h"
-	"CCriticalSection.h"
-
-1419208822 /home/daryl/桌面/idx-core/AtomicInteger.h
-
-1419315464 /home/daryl/桌面/idx-core/CResultPool.h
-	<algorithm>
-	<vector>
-
-1419315447 source:/home/daryl/桌面/idx-core/CResultPool.cpp
-	"pch.h"
-	"CResultPool.h"
-	"CConstants.h"
-
-1419815426 source:/home/daryl/桌面/idx-core/CTextFile.cpp
-	"pch.h"
-	"CConstants.h"
-	"CTextFile.h"
-	<sys/stat.h>
-	<fcntl.h>
-	<algorithm>
-
-1419331534 source:/home/daryl/桌面/idx-core/main.cpp
-	"pch.h"
-	"style.h"
-	"AtomicInteger.h"
-	"Object.h"
-	"Database.h"
-	"CDynamicVector.h"
-	"CThread.h"
-	"searching.h"
-	<algorithm>
-	<string>
-	<sys/types.h>
-	<sys/stat.h>
-	<fcntl.h>
-	<dirent.h>
-	<unistd.h>
-
-1418982810 /home/daryl/桌面/idx-core/style.h
-
 1419258414 /home/daryl/桌面/idx-core/CThread.h
 	"CCriticalSection.h"
 	<pthread.h>
-
-1418982690 source:/home/daryl/桌面/idx-core/Object.cpp
-	<stdio.h>
-	"Object.h"
 
 1419332828 source:/home/daryl/桌面/idx-core/searching.cpp
 	"pch.h"
@@ -276,7 +247,7 @@
 
 1419813913 /home/daryl/桌面/idx-core/compress.h
 
-1420629023 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CDatabase.cpp
+1420635299 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CDatabase.cpp
 	"pch.h"
 	"CConstants.h"
 	"Database.h"
@@ -300,7 +271,7 @@
 
 1419320880 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CConstants.h
 
-1420628771 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/Database.h
+1420635614 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/Database.h
 	"CConstants.h"
 	"CCriticalSection.h"
 	"CTextFile.h"
@@ -310,7 +281,7 @@
 
 1419163698 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CCriticalSection.h
 
-1420629008 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CTextFile.h
+1420635576 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CTextFile.h
 	"Object.h"
 	"CDynamicVector.h"
 	<iostream>
@@ -340,7 +311,7 @@
 	"CResultPool.h"
 	"CConstants.h"
 
-1420630486 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CTextFile.cpp
+1420635515 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/CTextFile.cpp
 	"pch.h"
 	"CConstants.h"
 	"CTextFile.h"
@@ -352,7 +323,7 @@
 	<stdio.h>
 	"Object.h"
 
-1420629003 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/searching.cpp
+1420719293 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/searching.cpp
 	"pch.h"
 	"Database.h"
 	"CResultPool.h"
@@ -364,7 +335,7 @@
 	<sys/stat.h>
 	<fcntl.h>
 
-1420630475 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/main.cpp
+1420636130 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/main.cpp
 	"pch.h"
 	"style.h"
 	"AtomicInteger.h"
@@ -397,4 +368,24 @@
 	<algorithm>
 
 1420627886 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/mseg.h
+
+1420715994 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/calculate.h
+
+1420719500 source:/home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/calculate.cpp
+	<iostream>
+	<vector>
+	<string>
+	<utility>
+	<sstream>
+	<stack>
+	"calculate.h"
+
+1420717585 /home/chenweiyi/linuxProgramming/linux-project-master/search/idx-core/calculate.cpp
+	<iostream>
+	<vector>
+	<string>
+	<utility>
+	<sstream>
+	<stack>
+	"calculate.h"
 
